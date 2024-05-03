@@ -98,39 +98,8 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
     );
   }
 
-  Column getTitle() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Text(
-          'تمرین زبان انگلیسی',
-          style: TextStyle(
-            fontFamily: 'SM',
-            fontWeight: FontWeight.w600,
-            fontSize: 24,
-          ),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          'تمرین زبان انگلیسی کتاب آموزشگاه',
-          style: TextStyle(
-            fontFamily: 'SM',
-            fontSize: 15,
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        getTimeandEditBadgs(),
-      ],
-    );
-  }
-
   Row getTimeandEditBadgs() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           width: 100,
