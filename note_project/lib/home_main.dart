@@ -146,7 +146,10 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
               children: [
                 Text(
                   'ویرایش',
-                  style: TextStyle(color: Color(0xff18DAA3)),
+                  style: TextStyle(
+                    color: Color(0xff18DAA3),
+                    fontFamily: 'SM',
+                  ),
                 ),
                 SizedBox(
                   width: 5,
