@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:msh_checkbox/msh_checkbox.dart';
+import 'package:note_project/eddit_task.dart';
 import 'package:note_project/task.dart';
 
 class TaskWidget extends StatefulWidget {
@@ -130,32 +131,43 @@ class _TaskWidgetState extends State<TaskWidget> {
         SizedBox(
           width: 10,
         ),
-        Container(
-          width: 100,
-          height: 40,
-          decoration: BoxDecoration(
-            color: Color(0xffE2F6F1),
-            borderRadius: BorderRadius.circular(18),
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 12,
+        InkWell(
+          onTap: () {
+            Navigator.of(context).pop(
+              MaterialPageRoute(
+                builder: (context) => EditTaskScreen(
+                  task: widget.task,
+                ),
+              ),
+            );
+          },
+          child: Container(
+            width: 100,
+            height: 40,
+            decoration: BoxDecoration(
+              color: Color(0xffE2F6F1),
+              borderRadius: BorderRadius.circular(18),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'ویرایش',
-                  style: TextStyle(
-                    color: Color(0xff18DAA3),
-                    fontFamily: 'SM',
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 12,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'ویرایش',
+                    style: TextStyle(
+                      color: Color(0xff18DAA3),
+                      fontFamily: 'SM',
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Image.asset('images/icon_edit.png'),
-              ],
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Image.asset('images/icon_edit.png'),
+                ],
+              ),
             ),
           ),
         )
