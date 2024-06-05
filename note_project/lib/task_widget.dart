@@ -133,7 +133,7 @@ class _TaskWidgetState extends State<TaskWidget> {
         ),
         InkWell(
           onTap: () {
-            Navigator.of(context).pop(
+            Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => EditTaskScreen(
                   task: widget.task,
