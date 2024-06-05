@@ -20,14 +20,18 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
     return Scaffold(
       backgroundColor: Color(0xffE5E5E5),
       body: Center(
-        child: ListView.builder(
-          itemCount: taskBox.values.length,
-          itemBuilder: (context, index) {
-            var task = taskBox.values.toList()[index];
-            return TaskWidget(task: task);
-          },
-        ),
-      ),
+          child: ValueListenableBuilder(
+        valueListenable: taskBox.listenable(),
+        builder: (context, value, child) {
+          return ListView.builder(
+            itemCount: taskBox.values.length,
+            itemBuilder: (context, index) {
+              var task = taskBox.values.toList()[index];
+              return TaskWidget(task: task);
+            },
+          );
+        },
+      )),
       floatingActionButton: FloatingActionButton(
         child: Image.asset('images/icon_add.png'),
         backgroundColor: Color(0xff18DAA3),
