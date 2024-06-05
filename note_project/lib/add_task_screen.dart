@@ -56,6 +56,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   String title = controlerTilte.text;
                   String subTitle = controlerSubTilte.text;
                   addText(title, subTitle);
+                  Navigator.of(context).pop();
                 },
                 child: Text(
                   'اضافه شدن تسک',

@@ -12,6 +12,14 @@ class TaskWidget extends StatefulWidget {
 
 class _TaskWidgetState extends State<TaskWidget> {
   bool isBoxChecked = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isBoxChecked = widget.task.isDone;
+  }
+
   @override
   Widget build(BuildContext context) {
     return getMainContainer();
@@ -63,6 +71,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                       }),
                   Text(
                     widget.task.title,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontFamily: 'SM',
                       fontWeight: FontWeight.w600,
@@ -73,6 +82,7 @@ class _TaskWidgetState extends State<TaskWidget> {
               ),
               Text(
                 widget.task.subtitle,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontFamily: 'SM',
                   fontSize: 15,
