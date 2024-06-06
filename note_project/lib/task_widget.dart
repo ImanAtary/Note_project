@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:msh_checkbox/msh_checkbox.dart';
+// import 'package:msh_checkbox/msh_checkbox.dart';
 import 'package:note_project/eddit_task.dart';
 import 'package:note_project/task.dart';
 
+// ignore: must_be_immutable
 class TaskWidget extends StatefulWidget {
   TaskWidget({super.key, required this.task});
   Task task;

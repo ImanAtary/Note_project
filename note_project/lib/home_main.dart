@@ -41,7 +41,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
               itemCount: taskBox.values.length,
               itemBuilder: (context, index) {
                 var task = taskBox.values.toList()[index];
-                return TaskWidget(task: task);
+                return get_listItem(task);
               },
             ),
           );
@@ -62,5 +62,14 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
         ),
       ),
     );
+  }
+
+  Widget get_listItem(Task task) {
+    return Dismissible(
+        key: UniqueKey(),
+        onDismissed: (direction) {
+          task.delete();
+        },
+        child: TaskWidget(task: task));
   }
 }
