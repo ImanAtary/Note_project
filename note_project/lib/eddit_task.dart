@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:note_project/task.dart';
+import 'package:time_pickerr/time_pickerr.dart';
 
 // ignore: must_be_immutable
 class EditTaskScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
   TextEditingController? controlerSubTilte;
 
   var taskAdd = Hive.box<Task>('taskBox');
-
+  DateTime? _time;
   @override
   void initState() {
     // TODO: implement initState
@@ -48,6 +49,28 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
               height: 100,
             ),
             _getTextField(state2, 'توضیحات تسک', controlerSubTilte!),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: CustomHourPicker(
+                title: 'زمان تسک را انتخاب کن',
+                titleStyle: TextStyle(
+                  color: Color(0xff18DAA3),
+                ),
+                negativeButtonText: 'حذف کن',
+                negativeButtonStyle: TextStyle(
+                  color: Color.fromARGB(255, 173, 26, 26),
+                ),
+                positiveButtonText: 'انتخاب زمان',
+                positiveButtonStyle: TextStyle(
+                  color: Color(0xff18DAA3),
+                ),
+                elevation: 2,
+                onNegativePressed: (context) {},
+                onPositivePressed: (context, time) {
+                  _time = time;
+                },
+              ),
+            ),
             Spacer(),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20),
@@ -117,6 +140,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
   EditText(String title, String subTitle) {
     widget.task.title = title;
     widget.task.subtitle = subTitle;
+    widget.task.time = _time!;
     widget.task.save();
   }
 }

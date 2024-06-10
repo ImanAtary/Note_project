@@ -116,7 +116,7 @@ class _TaskWidgetState extends State<TaskWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '10:30',
+                  '${widget.task.time.hour}:${widget.task.time.minute}',
                   style: TextStyle(
                     color: Colors.white,
                   ),
