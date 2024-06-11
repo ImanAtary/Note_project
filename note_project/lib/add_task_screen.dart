@@ -23,6 +23,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   DateTime? _time;
 
+  int _selectedItem = 0;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -43,7 +45,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: 70,
+              height: 30,
             ),
             _getTextField(state1, 'عنوان تسک', controlerTilte),
             SizedBox(
@@ -73,13 +75,22 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ),
             ),
             Container(
-              height: 150,
+              height: 186,
               child: ListView.builder(
                 itemCount: getTaskTypeList().length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return TaskItem(
-                    taskType: getTaskTypeList()[index],
+                  return InkWell(
+                    onTap: () {
+                      setState(() {
+                        _selectedItem = index;
+                      });
+                    },
+                    child: TaskItem(
+                      index: index,
+                      selectedItem: _selectedItem,
+                      taskType: getTaskTypeList()[index],
+                    ),
                   );
                 },
               ),
@@ -160,12 +171,25 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 }
 
 class TaskItem extends StatelessWidget {
-  TaskItem({super.key, required this.taskType});
+  TaskItem(
+      {super.key,
+      required this.taskType,
+      required this.index,
+      required this.selectedItem});
   TaskType taskType;
+  int index;
+  int selectedItem;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
+      decoration: BoxDecoration(
+          border: Border.all(
+            color: (selectedItem == index) ? Color(0xff18DAA3) : Colors.grey,
+            width: (selectedItem == index) ? 3 : 2,
+          ),
+          borderRadius: BorderRadius.circular(8)),
+      width: 140,
       margin: EdgeInsets.all(8),
       child: Column(
         children: [
